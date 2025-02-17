@@ -12,8 +12,7 @@ phases:
   post_build:
     commands:
       - aws s3 sync build/ s3://groupe3-mmotors --delete
-      - aws cloudfront create-invalidation --distribution-id ID_DISTRIBUTION_CLOUDFRONT --paths "/*"
-
+      
 artifacts:
   files:
     - '**/*'
