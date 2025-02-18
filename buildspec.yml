@@ -11,8 +11,9 @@ phases:
       - npm run build
   post_build:
     commands:
-      - aws s3 sync build/ s3://groupe3-mmotors --delete
-      
+      - npm test -- --watchAll=false
+      - aws s3 sync build/ s3://m-motors-groupe3 --delete
+
 artifacts:
   files:
     - '**/*'
