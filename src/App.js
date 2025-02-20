@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { Cars } from "./pages/Cars";
 import { Login } from "./pages/Login";
-import Register from "./pages/Register";
+import { Register } from "./pages/Register";
 import AdminPage from "./pages/AdminPage";
 import "./App.css";
 

@@ -12,11 +12,14 @@ import {
 import api from "./api";
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
+import { OrderModal } from "../components/OrderModal";
 
 export const Cars = () => {
   const [vehicles, setVehicles] = useState([]);
   const [notification, setNotification] = useState(null);
   const [filter, setFilter] = useState("all");
+  const [modalOpen, setModalOpen] = useState(false);
+  const [selectedVehicle, setSelectedVehicle] = useState(null);
 
   useEffect(() => {
     api
@@ -30,6 +33,16 @@ export const Cars = () => {
     if (filter === "rental") return vehicle.rental_price !== null;
     return true;
   });
+
+  const openModal = (vehicle) => {
+    setSelectedVehicle(vehicle);
+    setModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setModalOpen(false);
+    setSelectedVehicle(null);
+  };
 
   return (
     <Box sx={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
@@ -46,7 +59,6 @@ export const Cars = () => {
       >
         {notification && <Alert severity="error">{notification}</Alert>}
 
-        {/* Boutons de filtre */}
         <Box sx={{ display: "flex", justifyContent: "center", mb: 3 }}>
           <ButtonGroup>
             <Button
@@ -92,11 +104,26 @@ export const Cars = () => {
                     Location: {vehicle.rental_price}€
                   </Typography>
                 )}
+                <Button
+                  variant="contained"
+                  color="primary"
+                  onClick={() => openModal(vehicle)}
+                >
+                  Créer Dossier
+                </Button>
               </CardContent>
             </Card>
           ))}
         </Box>
       </Container>
+
+      {selectedVehicle && (
+        <OrderModal
+          vehicle={selectedVehicle}
+          open={modalOpen}
+          handleClose={handleCloseModal}
+        />
+      )}
 
       <Footer />
     </Box>
