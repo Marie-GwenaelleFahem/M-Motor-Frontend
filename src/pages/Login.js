@@ -1,8 +1,19 @@
 import React, { useState } from "react";
+import {
+  Box,
+  Container,
+  TextField,
+  Button,
+  Typography,
+  Alert,
+} from "@mui/material";
+import { Link } from "react-router-dom";
+import { FaUserPlus } from "react-icons/fa";
 import api from "./api";
-import "../App.css";
+import { Header } from "../components/Header";
+import { Footer } from "../components/Footer";
 
-const Login = () => {
+export const Login = () => {
   const [formData, setFormData] = useState({ username: "", password: "" });
   const [message, setMessage] = useState("");
 
@@ -13,8 +24,7 @@ const Login = () => {
   const handleLogin = async () => {
     try {
       const response = await api.post("/token", formData);
-      const token = response.data.access_token;
-      localStorage.setItem("token", token);
+      localStorage.setItem("token", response.data.access_token);
       setMessage("Connexion réussie !");
     } catch (error) {
       setMessage("Identifiants incorrects !");
@@ -23,22 +33,79 @@ const Login = () => {
   };
 
   return (
-    <div className="auth-container">
-      <div className="auth-box">
-        <h2>Connexion</h2>
-        <div className="input-group">
-          <label>Nom d'utilisateur</label>
-          <input type="text" name="username" value={formData.username} onChange={handleChange} />
-        </div>
-        <div className="input-group">
-          <label>Mot de passe</label>
-          <input type="password" name="password" value={formData.password} onChange={handleChange} />
-        </div>
-        <button className="btn btn-login" onClick={handleLogin}>Se connecter</button>
-        {message && <p className="message">{message}</p>}
-      </div>
-    </div>
+    <Box sx={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
+      <Header />
+
+      <Container
+        sx={{
+          flex: 1,
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          mt: 10,
+          mb: 10,
+        }}
+      >
+        <Box
+          sx={{
+            width: 350,
+            p: 3,
+            bgcolor: "background.paper",
+            borderRadius: 2,
+            boxShadow: 3,
+          }}
+        >
+          <Typography variant="h5" gutterBottom>
+            Connexion
+          </Typography>
+
+          <TextField
+            label="Nom d'utilisateur"
+            name="username"
+            fullWidth
+            margin="normal"
+            value={formData.username}
+            onChange={handleChange}
+          />
+          <TextField
+            label="Mot de passe"
+            name="password"
+            type="password"
+            fullWidth
+            margin="normal"
+            value={formData.password}
+            onChange={handleChange}
+          />
+
+          <Button
+            variant="contained"
+            color="primary"
+            fullWidth
+            sx={{ mt: 2 }}
+            onClick={handleLogin}
+          >
+            Se connecter
+          </Button>
+
+          {message && (
+            <Alert severity="error" sx={{ mt: 2 }}>
+              {message}
+            </Alert>
+          )}
+
+          <Link to="/register" style={{ textDecoration: "none" }}>
+            <Button
+              startIcon={<FaUserPlus />}
+              fullWidth
+              sx={{ mt: 2, color: "primary.main" }}
+            >
+              Inscription
+            </Button>
+          </Link>
+        </Box>
+      </Container>
+
+      <Footer />
+    </Box>
   );
 };
-
-export default Login;
