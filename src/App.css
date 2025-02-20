@@ -1,0 +1,298 @@
+/* Centrer la page */
+.home-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f2f5;
+  }
+  
+  /* Style de la boîte */
+  .home-box {
+    background: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 400px;
+  }
+  
+  /* Titre */
+  .home-box h1 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  /* Texte */
+  .home-box p {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 20px;
+  }
+  
+  /* Groupe de boutons */
+  .button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  /* Boutons stylés */
+  .btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 12px;
+    border-radius: 8px;
+    color: white;
+    transition: 0.3s;
+  }
+  
+  /* Bouton Connexion */
+  .btn-login {
+    background-color: #007bff;
+  }
+  
+  .btn-login:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Bouton Inscription */
+  .btn-register {
+    background-color: #28a745;
+  }
+  
+  .btn-register:hover {
+    background-color: #1e7e34;
+  }
+  
+  /* Icônes */
+  .icon {
+    margin-right: 8px;
+    font-size: 18px;
+  }
+  
+  
+  /* Centre toute la page */
+.register-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Prend toute la hauteur de l'écran */
+    background-color: #f0f2f5; /* Couleur de fond légère */
+  }
+  
+  /* Style du formulaire */
+  .register-box {
+    background: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+    width: 380px;
+    text-align: center;
+  }
+  
+  /* Titre */
+  .register-box h2 {
+    margin-bottom: 25px;
+    color: #333;
+    font-size: 22px;
+  }
+  
+  /* Style des champs */
+  .input-group {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    margin-bottom: 15px;
+  }
+  
+  .input-group label {
+    margin-bottom: 6px;
+    font-weight: bold;
+    color: #444;
+  }
+  
+  .input-group input {
+    padding: 12px;
+    border: 1px sol
+  }  
+
+  /* Centrer la page */
+.home-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f0f2f5;
+}
+
+/* Style de la boîte */
+.home-box {
+  background: white;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  max-width: 400px;
+}
+
+/* Titre */
+.home-box h1 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+/* Texte */
+.home-box p {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+/* Groupe de boutons */
+.button-group {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Boutons stylés */
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 12px;
+  border-radius: 8px;
+  color: white;
+  transition: 0.3s;
+}
+
+/* Bouton Connexion */
+.btn-login {
+  background-color: #007bff;
+}
+
+.btn-login:hover {
+  background-color: #0056b3;
+}
+
+/* Bouton Inscription */
+.btn-register {
+  background-color: #28a745;
+}
+
+.btn-register:hover {
+  background-color: #1e7e34;
+}
+
+/* Icônes */
+.icon {
+  margin-right: 8px;
+  font-size: 18px;
+}
+
+/* --------- LOGIN & REGISTER --------- */
+
+/* Centre la page Login et Register */
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f2f5;
+  }
+  
+  /* Style du formulaire */
+  .auth-box {
+    background: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+    width: 380px;
+    text-align: center;
+  }
+  
+  /* Titre */
+  .auth-box h2 {
+    margin-bottom: 25px;
+    color: #333;
+    font-size: 22px;
+  }
+  
+  /* Style des champs */
+  .auth-box .input-group {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    margin-bottom: 15px;
+  }
+  
+  .auth-box .input-group label {
+    margin-bottom: 6px;
+    font-weight: bold;
+    color: #444;
+  }
+  
+  .auth-box .input-group input {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    width: 100%;
+    font-size: 16px;
+  }
+  
+  /* Style du bouton */
+  .auth-box .btn {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  /* Bouton Login */
+  .btn-login {
+    background-color: #007bff;
+  }
+  
+  .btn-login:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Bouton Register */
+  .btn-register {
+    background-color: #28a745;
+  }
+  
+  .btn-register:hover {
+    background-color: #1e7e34;
+  }
+  
+  /* Lien vers login/register */
+  .auth-box p {
+    margin-top: 10px;
+    font-size: 14px;
+  }
+  
+  .auth-box p a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .auth-box p a:hover {
+    text-decoration: underline;
+  }
+  
