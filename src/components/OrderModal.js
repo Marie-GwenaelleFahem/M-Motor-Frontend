@@ -31,20 +31,36 @@ export const OrderModal = ({ vehicle, open, handleClose }) => {
   const navigate = useNavigate();
 
   const handleSubmit = async () => {
+    const formatDate = (dateStr) => {
+      if (!dateStr) return null;
+      const date = new Date(dateStr);
+      return date.toISOString().slice(0, 10);
+    };
+
+    const formattedStartDate = formatDate(startDate);
+    const formattedReturnDate = formatDate(returnDate);
+    console.log(formattedStartDate);
     const orderData = {
       user_id: 1,
       vehicle_id: vehicle.id,
       order_type: orderType,
       status: "pending",
-      abonnement: orderType === "rental" ? abonnement : undefined,
-      options: orderType === "rental" && !abonnement ? options : undefined,
-      start_date: orderType === "rental" ? startDate : undefined,
-      return_date: orderType === "rental" ? returnDate : undefined,
+      subscription: orderType === "rental" ? abonnement : null,
+      options: orderType === "rental" && !abonnement ? options : null,
+      start_date: orderType === "rental" ? formattedStartDate : null,
+      return_date: orderType === "rental" ? formattedReturnDate : null,
     };
 
     try {
-      const response = await api.post("/orders", orderData);
-      console.log(response.data);
+      if (orderType === "purchase") {
+        console.log(orderType);
+        const response = await api.post("/purchase/", orderData);
+        console.log(response.data);
+      } else {
+        console.log(orderData);
+        const response = await api.post("/rental/", orderData);
+        console.log(response.data);
+      }
       handleClose();
     } catch (error) {
       console.error("Erreur lors de la soumission de la commande", error);
@@ -87,7 +103,7 @@ export const OrderModal = ({ vehicle, open, handleClose }) => {
             <TextField
               fullWidth
               label="Date de début"
-              type="datetime-local"
+              type="date"
               value={startDate}
               onChange={(e) => setStartDate(e.target.value)}
               sx={{ mb: 2 }}
@@ -96,7 +112,7 @@ export const OrderModal = ({ vehicle, open, handleClose }) => {
             <TextField
               fullWidth
               label="Date de retour"
-              type="datetime-local"
+              type="date"
               value={returnDate}
               onChange={(e) => setReturnDate(e.target.value)}
               sx={{ mb: 2 }}
