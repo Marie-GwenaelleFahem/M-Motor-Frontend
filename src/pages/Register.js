@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import bcrypt from "bcryptjs";
 import api from "./api";
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
@@ -25,7 +26,14 @@ export const Register = () => {
 
   const handleRegister = async () => {
     try {
-      await api.post("/addusers/", formData);
+      const salt  = await bcrypt.genSalt(10);
+      const hashedPassword = await bcrypt.hash(formData.password, salt);
+      const userdata={
+        username:formData.username,
+        email:formData.email,
+        password:hashedPassword
+      }
+      await api.post("/addusers/", userdata);
       setMessage("Inscription réussie ! Connectez-vous maintenant.");
     } catch (error) {
       setMessage("Erreur lors de l'inscription.");
