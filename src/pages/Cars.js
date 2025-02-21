@@ -10,8 +10,6 @@ import {
   ButtonGroup,
 } from "@mui/material";
 import api from "./api";
-import { Header } from "../components/Header";
-import { Footer } from "../components/Footer";
 import { OrderModal } from "../components/OrderModal";
 
 export const Cars = () => {
@@ -46,7 +44,6 @@ export const Cars = () => {
 
   return (
     <Box sx={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
-      <Header />
       <Container
         sx={{
           flex: 1,
@@ -99,9 +96,9 @@ export const Cars = () => {
                     Achat: {vehicle.purchase_price}€
                   </Typography>
                 )}
-                {vehicle.rental_price !== null && (
+                {vehicle.rental_price !== null &&  (
                   <Typography variant="body1">
-                    Location: {vehicle.rental_price}€
+                    Location: {vehicle.rental_price}€/jour
                   </Typography>
                 )}
                 <Button
@@ -125,7 +122,6 @@ export const Cars = () => {
         />
       )}
 
-      <Footer />
     </Box>
   );
 };

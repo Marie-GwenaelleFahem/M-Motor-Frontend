@@ -23,12 +23,13 @@ export const EditModal = ({
         model: vehicle.model,
         purchase_price: vehicle.purchase_price !== null ? vehicle.purchase_price : "",
         rental_price: vehicle.rental_price || "",
+        is_sold: vehicle.is_sold,
       };
-
+/* 
       // On ajoute is_sold uniquement si purchase_price n'est pas null
       if (vehicle.purchase_price !== null) {
         data.is_sold = vehicle.is_sold || false;
-      }
+      } */
       setFormData(data);
     }
   }, [vehicle, setFormData]);
@@ -40,11 +41,23 @@ export const EditModal = ({
       [name]: type === "checkbox" ? checked : value,
     });
   };
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmit();
+  
+    const updatedVehicle = {
+      ...vehicle,
+      model: formData.model,
+      purchase_price: formData.purchase_price || null,
+      rental_price: formData.rental_price || null,
+      is_sold: formData.is_sold || false,
+    };
+  
+    console.log("Véhicule mis à jour :", updatedVehicle);
+    onSubmit(updatedVehicle);
+    handleClose(); // Ferme la modal après la soumission
   };
+  
+  
 
   return (
     <Modal open={open} onClose={handleClose}>
