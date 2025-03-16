@@ -3,6 +3,7 @@ import { Container, Button, Box } from "@mui/material";
 import { Link } from "react-router-dom";
 
 function AdminPage() {
+
   return (
     <Container 
       sx={{
@@ -28,7 +29,7 @@ function AdminPage() {
           to="/admin/vehicles"
         >
           Gestion des Véhicules 
-          
+
         </Button>
         <Button
           variant="contained"
