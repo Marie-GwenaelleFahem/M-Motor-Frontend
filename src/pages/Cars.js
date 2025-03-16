@@ -13,6 +13,14 @@ import api from "./api";
 import { OrderModal } from "../components/OrderModal";
 
 export const Cars = () => {
+  const [username, setUsername] = useState(null);
+
+  useEffect(() => {
+    const storedUsername = localStorage.getItem("username");
+    if (storedUsername) {
+      setUsername(storedUsername);
+    }
+  }, []);
   const [vehicles, setVehicles] = useState([]);
   const [notification, setNotification] = useState(null);
   const [filter, setFilter] = useState("all");
@@ -101,13 +109,14 @@ export const Cars = () => {
                     Location: {vehicle.rental_price}€/jour
                   </Typography>
                 )}
+                {username &&
                 <Button
                   variant="contained"
                   color="primary"
                   onClick={() => openModal(vehicle)}
                 >
                   Créer Dossier
-                </Button>
+                </Button>}
               </CardContent>
             </Card>
           ))}

@@ -10,12 +10,21 @@ import VehicleRevenue from "./pages/admin/VehiculeRevenue";
 import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
 import "./App.css";
-
+import { useState, useEffect } from "react"; 
 function App() {
+  const [username, setUsername] = useState(null);
+
+
+  useEffect(() => {
+    const storedUsername = localStorage.getItem("username");
+    if (storedUsername) {
+      setUsername(storedUsername);
+    }
+  }, []);
   return (
     
       <Router>
-    <Header />
+      <Header username={username} setUsername={setUsername} />
       <Routes>
         <Route path="/" element={<Cars />} />
         <Route path="/login" element={<Login />} />

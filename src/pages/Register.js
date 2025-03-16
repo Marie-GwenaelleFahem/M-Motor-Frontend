@@ -43,7 +43,6 @@ export const Register = () => {
 
   return (
     <Box sx={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
-      <Header />
       <Container
         maxWidth="sm"
         sx={{

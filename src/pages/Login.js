@@ -7,13 +7,14 @@ import {
   Typography,
   Alert,
 } from "@mui/material";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaUserPlus } from "react-icons/fa";
 import api from "./api";
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
 
 export const Login = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({ username: "", password: "" });
   const [message, setMessage] = useState("");
 
@@ -22,19 +23,28 @@ export const Login = () => {
   };
 
   const handleLogin = async () => {
+    const formdata = new FormData();
+    formdata.append('username', formData.username);
+    formdata.append('password', formData.password);
     try {
-      const response = await api.post("/token", formData);
+      const response = await api.post("/token", formdata,{
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded"
+        }
+      });
       localStorage.setItem("token", response.data.access_token);
+      localStorage.setItem("username" , formData.username);
       setMessage("Connexion réussie !");
+      navigate("/");
     } catch (error) {
       setMessage("Identifiants incorrects !");
       console.error("Erreur:", error);
+      navigate("/login")
     }
   };
 
   return (
     <Box sx={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
-      <Header />
 
       <Container
         sx={{
